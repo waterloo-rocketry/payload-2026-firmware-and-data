@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../IOC/IOC"
+		},
+		{
+			"name": "Payload Project",
+			"path": ".."
+		}
+	],
+	"settings": {}
+}
