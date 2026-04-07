@@ -1,22 +1,13 @@
 
 #include "main.h"
-#include "hal_init.c"
-#include "system_clock_config.c"
-#include "mx_adc_init.c"
-#include "mx_spi_init.c"
-#include "mx_tim1_init.c"
-#include "mx_fdcan1_init.c"
+#include "system_clock_config.h"
+#include "mx_adc_init.h"
+#include "mx_spi_init.h"
+#include "mx_tim1_init.h"
+#include "mx_fdcan1_init.h"
+#include "GPIO_init.h"
 
-#include "GPIO_init.c"
-
-void SystemClock_Config(void);
-static void MX_GPIO_Init(void);
-static void MX_ADC1_Init(void);
-static void MX_SPI1_Init(void);
-static void MX_TIM1_Init(void);
-static void MX_FDCAN1_Init(void);
-
-void main(void) {
+int main(void) {
     HAL_Init();
     SystemClock_Config();
     MX_GPIO_Init();
@@ -25,6 +16,11 @@ void main(void) {
     MX_TIM1_Init();
     MX_FDCAN1_Init();
 
+    return 0;
+}
 
+void Error_Handler(void) {
+    /* USER CODE BEGIN Error_Handler_Debug */
+    /* USER CODE END Error_Handler_Debug */
 }
 

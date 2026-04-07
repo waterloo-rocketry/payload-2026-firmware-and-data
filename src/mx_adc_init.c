@@ -2,7 +2,7 @@
 
 ADC_HandleTypeDef hadc1;
 
-static void MX_ADC1_Init(void)
+void MX_ADC1_Init(void)
 {
 
   /* USER CODE BEGIN ADC1_Init 0 */

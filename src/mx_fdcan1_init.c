@@ -3,7 +3,7 @@
 FDCAN_HandleTypeDef hfdcan1;
 
 
-static void MX_FDCAN1_Init(void)
+void MX_FDCAN1_Init(void)
 {
 
   /* USER CODE BEGIN FDCAN1_Init 0 */

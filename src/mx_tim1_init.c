@@ -3,7 +3,7 @@
 
 TIM_HandleTypeDef htim1;
 
-static void MX_TIM1_Init(void)
+void MX_TIM1_Init(void)
 {
 
   /* USER CODE BEGIN TIM1_Init 0 */
