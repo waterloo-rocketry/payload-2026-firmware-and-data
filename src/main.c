@@ -1,7 +1,20 @@
 
 #include "main.h"
+#include "hal_init.c"
+#include "system_clock_config.c"
+#include "mx_adc_init.c"
+#include "mx_spi_init.c"
+#include "mx_tim1_init.c"
+#include "mx_fdcan1_init.c"
 
-void main(void);
+#include "GPIO_init.c"
+
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_ADC1_Init(void);
+static void MX_SPI1_Init(void);
+static void MX_TIM1_Init(void);
+static void MX_FDCAN1_Init(void);
 
 void main(void) {
     HAL_Init();
@@ -12,51 +25,6 @@ void main(void) {
     MX_TIM1_Init();
     MX_FDCAN1_Init();
 
-    
-}
-
-
-/**
-  * @brief Defintiions section.
-  * @retval None
-  */
- 
-
-  HAL_StatusTypeDef HAL_Init(void)
-{
-  HAL_StatusTypeDef  status = HAL_OK;
-  /* Configure Flash prefetch, Instruction cache, Data cache */
-  /* Default configuration at reset is:                      */
-  /* - Prefetch disabled                                     */
-  /* - Instruction cache enabled                             */
-  /* - Data cache enabled                                    */
-#if (INSTRUCTION_CACHE_ENABLE == 0U)
-  __HAL_FLASH_INSTRUCTION_CACHE_DISABLE();
-#endif /* INSTRUCTION_CACHE_ENABLE */
-
-#if (DATA_CACHE_ENABLE == 0U)
-  __HAL_FLASH_DATA_CACHE_DISABLE();
-#endif /* DATA_CACHE_ENABLE */
-
-#if (PREFETCH_ENABLE != 0U)
-  __HAL_FLASH_PREFETCH_BUFFER_ENABLE();
-#endif /* PREFETCH_ENABLE */
-
-  /* Set Interrupt Group Priority */
-  HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
-
-  /* Use SysTick as time base source and configure 1ms tick (default clock after Reset is HSI) */
-  if (HAL_InitTick(TICK_INT_PRIORITY) != HAL_OK)
-  {
-    status = HAL_ERROR;
-  }
-  else
-  {
-    /* Init the low level hardware */
-    HAL_MspInit();
-  }
-
-  /* Return function status */
-  return status;
 
 }
+
