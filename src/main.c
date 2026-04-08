@@ -41,7 +41,6 @@ int main(void) {
 }
 
 void Error_Handler(void) {
-    /* USER CODE BEGIN Error_Handler_Debug */
-    /* USER CODE END Error_Handler_Debug */
+ // Add debug code
 }
 
