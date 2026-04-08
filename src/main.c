@@ -6,6 +6,7 @@
 #include "mx_tim1_init.h"
 #include "mx_fdcan1_init.h"
 #include "GPIO_init.h"
+#include "blinky_flick.h"
 
 int main(void) {
     HAL_Init();
@@ -16,23 +17,11 @@ int main(void) {
     MX_TIM1_Init();
     MX_FDCAN1_Init();
 
-    // pull down on LED
-    HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_RESET);
-
     while (1) {
-        // toggle LED
-        switch (HAL_GPIO_ReadPin(LED1_GPIO_Port, LED1_Pin)) {
-            case GPIO_PIN_RESET:
-                HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
-                break;
-            case GPIO_PIN_SET:
-                HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
-                break;
-        }
-        HAL_Delay(500);
+        blinky_flick();
+        
     }
-
+ 
 
     return 0;
 
