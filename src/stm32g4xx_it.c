@@ -229,5 +229,3 @@ void FDCAN1_IT1_IRQHandler(void)
 /* USER CODE BEGIN 1 */
 
 /* USER CODE END 1 */
-
-
