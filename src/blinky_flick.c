@@ -15,7 +15,7 @@ void blinky_flick(void) {
 
     HAL_GPIO_WritePin(LED2_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
 
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 21; i++) {
 
         switch (HAL_GPIO_ReadPin(LED2_GPIO_Port, LED2_Pin)) {
             case GPIO_PIN_RESET:
