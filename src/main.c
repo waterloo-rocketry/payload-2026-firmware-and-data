@@ -8,7 +8,7 @@
 #include "GPIO_init.h"
 
 int main(void) {
-    HAL_Init();
+    HALx_Init();
     SystemClock_Config();
     MX_GPIO_Init();
     MX_ADC1_Init();
