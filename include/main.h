@@ -59,8 +59,6 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define NSRT_Pin GPIO_PIN_10
-#define NSRT_GPIO_Port GPIOG
 #define CUR_SEN_Pin GPIO_PIN_0
 #define CUR_SEN_GPIO_Port GPIOA
 #define IRQ_MDAT_Pin GPIO_PIN_1
