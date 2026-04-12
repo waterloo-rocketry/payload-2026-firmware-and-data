@@ -4,6 +4,7 @@
 #include "stm32g4xx_hal.h"
 #include "stm32g4xx_hal_spi.h"
 #include "stdint.h"
+#
 
 
 extern SPI_HandleTypeDef hspi1;
@@ -16,7 +17,6 @@ void SPI_ADC_SendCommand(uint8_t cmd) {
     
     if (status != HAL_OK) {
         // Handle error
+        Error_Handler();
     }
-
-    SPI_BLINKY();
 }

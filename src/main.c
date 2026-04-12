@@ -34,6 +34,10 @@ int main(void) {
 }
 
 void Error_Handler(void) {
- // Add debug code
+    // Signal error by toggling LED rapidly
+    while (1) {
+        HAL_GPIO_TogglePin(GPIOA, LED1_Pin);
+        HAL_Delay(100);  
+    }
 }
 
