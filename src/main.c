@@ -7,6 +7,7 @@
 #include "mx_fdcan1_init.h"
 #include "GPIO_init.h"
 #include "blinky_flick.h"
+#include "SPI_ADC.h"
 
 int main(void) {
     HAL_Init();
@@ -16,9 +17,11 @@ int main(void) {
     MX_SPI1_Init();
     MX_TIM1_Init();
     MX_FDCAN1_Init();
+    
 
     while (1) {
         blinky_flick();
+        SPI_ADC_SendCommand(ADC_CMD_CONVERSION_START);
         
     }
  
