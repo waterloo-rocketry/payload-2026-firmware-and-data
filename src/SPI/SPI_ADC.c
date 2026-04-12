@@ -5,6 +5,7 @@
 #include "stm32g4xx_hal_spi.h"
 #include "stdint.h"
 
+
 extern SPI_HandleTypeDef hspi1;
 
 
@@ -17,5 +18,5 @@ void SPI_ADC_SendCommand(uint8_t cmd) {
         // Handle error
     }
 
-    blinky_flick();
+    SPI_BLINKY();
 }

@@ -21,6 +21,7 @@ int main(void) {
 
     while (1) {
         // blinky_flick();
+        HAL_Delay(1000);
         SPI_ADC_SendCommand(ADC_CMD_CONVERSION_START);
         
     }
