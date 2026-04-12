@@ -4,7 +4,7 @@
 #include "stm32g4xx_hal.h"
 #include "stm32g4xx_hal_spi.h"
 #include "stdint.h"
-#
+#include "main.h"
 
 
 extern SPI_HandleTypeDef hspi1;
