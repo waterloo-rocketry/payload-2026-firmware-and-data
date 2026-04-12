@@ -20,7 +20,7 @@ int main(void) {
     
 
     while (1) {
-        blinky_flick();
+        // blinky_flick();
         SPI_ADC_SendCommand(ADC_CMD_CONVERSION_START);
         
     }

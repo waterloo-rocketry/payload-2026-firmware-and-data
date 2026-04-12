@@ -16,4 +16,6 @@ void SPI_ADC_SendCommand(uint8_t cmd) {
     if (status != HAL_OK) {
         // Handle error
     }
+
+    blinky_flick();
 }

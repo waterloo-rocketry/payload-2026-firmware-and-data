@@ -12,5 +12,6 @@
 #define ADC_CMD_FULL_RESET 0x78 
 
 void SPI_ADC_SendCommand(uint8_t cmd);
+void SPI_BLINKY(void);
 
 #endif 
