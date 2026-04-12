@@ -8,6 +8,11 @@
 #include "GPIO_init.h"
 #include "blinky_flick.h"
 #include "SPI_ADC.h"
+#include "stm32g4xx_hal_fdcan.h"
+#include "stm32g4xx_hal.h"
+#include "stm32g4xx_hal_spi.h"
+#include "stm32g_can.h"
+
 
 int main(void) {
     HAL_Init();
@@ -18,13 +23,17 @@ int main(void) {
     MX_TIM1_Init();
     MX_FDCAN1_Init();
     
+    // Initialize CAN with receive callback
+    stm32g4_can_init()
 
     while (1) {
         // blinky_flick();
         HAL_Delay(1000);
-        SPI_ADC_SendCommand(ADC_CMD_CONVERSION_START);
+        SPI_ADC_SendCommand(DEBUG_SPI_ADC);
         
     }
+     
+    
  
 
     return 0;
