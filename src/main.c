@@ -11,6 +11,7 @@
 #include "stm32g4xx_hal_fdcan.h"
 #include "stm32g4xx_hal.h"
 #include "stm32g4xx_hal_spi.h"
+#include "can.h"
 #include "stm32g_can.h"
 
 
@@ -24,7 +25,7 @@ int main(void) {
     MX_FDCAN1_Init();
     
     // Initialize CAN with receive callback
-    stm32g4_can_init()
+    stm32g4_can_init(&hfdcan1, NULL); 
 
     while (1) {
         // blinky_flick();
