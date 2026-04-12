@@ -13,8 +13,7 @@
 #include "stm32g4xx_hal_spi.h"
 #include "can.h"
 #include "stm32g_can.h"
-
-
+ 
 int main(void) {
     HAL_Init();
     SystemClock_Config();
@@ -26,6 +25,14 @@ int main(void) {
     
     // Initialize CAN with receive callback
     stm32g4_can_init(&hfdcan1, NULL); 
+
+    HAL_FDCAN_RxFifo0Callback(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE); // Manually trigger the callback to test CAN reception
+    
+    uint8_t test_data = 0xAB; // Example data to send
+    
+    stm32g4_can_send(&test_data); // Test sending a CAN message
+
+
 
     while (1) {
         // blinky_flick();
