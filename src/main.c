@@ -13,6 +13,7 @@
 #include "stm32g4xx_hal_spi.h"
 #include "can.h"
 #include "stm32g_can.h"
+#include "can_storage.h"
  
 int main(void) {
     HAL_Init();
@@ -24,7 +25,7 @@ int main(void) {
     MX_FDCAN1_Init();
     
     // Initialize CAN with receive callback
-    stm32g4_can_init(&hfdcan1, NULL); 
+    stm32g4_can_init(&hfdcan1, my_recive_callback); 
 
 
     while (1) {
