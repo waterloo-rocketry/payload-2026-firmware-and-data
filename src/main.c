@@ -14,6 +14,7 @@
 #include "can.h"
 #include "stm32g_can.h"
 #include "can_storage.h"
+#include "my_can.h"
  
 int main(void) {
     HAL_Init();
@@ -34,9 +35,9 @@ int main(void) {
         SPI_ADC_SendCommand(DEBUG_SPI_ADC);
 
         can_msg_t msg;
-        msg.sid = 0x123;
-        msg.data_len = 1;
-        msg.data[0] = 0xAB;
+        msg.sid = can_sid_test;
+        msg.data_len = can_data_len_test;
+        msg.data[0] = can_data_test;
 
         if (stm32g4_can_send_rdy()){
             bool ok = stm32g4_can_send(&msg);
