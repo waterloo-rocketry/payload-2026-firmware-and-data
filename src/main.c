@@ -33,13 +33,19 @@ int main(void) {
         HAL_Delay(1000);
         SPI_ADC_SendCommand(DEBUG_SPI_ADC);
 
+        can_msg_t msg;
+        msg.sid = 0x123;
+        msg.data_len = 1;
+        msg.data[0] = 0xAB;
 
-        HAL_FDCAN_RxFifo0Callback(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE); // Manually trigger the callback to test CAN reception
-    
-       uint8_t test_data = 0xAB; // Example data to send 10101011
+        if (stm32g4_can_send_rdy()){
+            bool ok = stm32g4_can_send(&msg);
+            if (!ok) {
+                // Handle transmission error
+                Error_Handler();
+            }
+        }
         
-       stm32g4_can_send(&test_data); // Test sending a CAN message
-
         
     }
      
