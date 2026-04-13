@@ -17,6 +17,8 @@
 #include "CAN_shortcuts.h"
  
 int main(void) {
+
+    // Initazaltion code dont touch
     HAL_Init();
     SystemClock_Config();
     MX_GPIO_Init();
@@ -29,6 +31,8 @@ int main(void) {
     stm32g4_can_init(&hfdcan1, my_recive_callback); 
 
 
+
+    
     while (1) {
         // blinky_flick();
         HAL_Delay(1000);
