@@ -14,7 +14,7 @@
 #include "can.h"
 #include "stm32g_can.h"
 #include "can_storage.h"
-#include "my_can.h"
+#include "CAN_shortcuts.h"
  
 int main(void) {
     HAL_Init();
