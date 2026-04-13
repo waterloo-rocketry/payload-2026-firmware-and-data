@@ -30,13 +30,11 @@ int main(void) {
     // Initialize CAN with receive callback
     stm32g4_can_init(&hfdcan1, my_recive_callback); 
 
-
-
     
     while (1) {
         // blinky_flick();
         HAL_Delay(1000);
-        SPI_ADC_SendCommand(DEBUG_SPI_ADC);
+        SPI_SendCommand(DEBUG_SPI_ADC);
 
         can_msg_t msg;
         msg.sid = can_sid_test;
@@ -66,8 +64,10 @@ int main(void) {
 void Error_Handler(void) {
     // Signal error by toggling LED rapidly
     while (1) {
-        HAL_GPIO_TogglePin(GPIOA, LED1_Pin);
+        HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_SET);
         HAL_Delay(100);  
+        HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_RESET);
+        HAL_Delay(100);
     }
 }
 

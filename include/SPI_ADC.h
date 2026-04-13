@@ -4,6 +4,7 @@
 
 #include <stdint.h>
 
+
 #define DEBUG_SPI_ADC 0x15 // 10101
 #define ADC_CMD_CONVERSION_START 0x68  01101000
 #define ADC_CMD_CONVERSION_RESTART 0x68 

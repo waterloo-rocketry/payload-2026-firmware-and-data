@@ -13,7 +13,7 @@ void blinky_flick(void) {
 
     HAL_Delay(3000);
 
-    HAL_GPIO_WritePin(LED2_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_SET);
 
     for (int i = 0; i < 2; i++) {
 
