@@ -13,7 +13,7 @@ static FDCAN_HandleTypeDef *fdcan_handle;
  * @brief Initialize CAN
  * @param handle: pointer to FDCAN handle
  * @param receive_callback: pointer to user defined callback function to be called when a CAN message is received
- * @return true if initialization was successful, false otherwise
+ * @return True: if initialization was successful, false otherwise
 
 Remebers what perpiferals and function to call when CAN is used and to enable intrrupts 
 */

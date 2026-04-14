@@ -15,6 +15,7 @@
 #include "stm32g_can.h"
 #include "can_storage.h"
 #include "CAN_shortcuts.h"
+#include "SPI.h"
  
 int main(void) {
 
