@@ -4,19 +4,23 @@
 
 #include <stdint.h>
 
-
 typedef enum {
     ADC_DATA    = 0x0,
     REG_CONFIG0 = 0x1,
     REG_CONFIG1 = 0x2,
     REG_CONFIG2 = 0x3,
     REG_CONFIG3 = 0x4,
+    REG_IRQ = 0x5,
 } CONFIG_REG_ADDR;
 
-// typedef enum {
-// }
+typedef enum {
+Fast_Command = 0x0,
+Static_Read = 0x1,
+Incremental_Write = 0x2,
+Incremental_Read = 0x3
+} COMMAND_TYPE;
 
-#define ADC_DEVICE_ADRESS 0x1 ;
+#define ADC_DEVICE_ADRESS 0x1
 
 
 typedef enum { 
@@ -32,5 +36,6 @@ typedef enum {
 
 
 void SPI_ADC_INIT(void);
+
 
 #endif 
