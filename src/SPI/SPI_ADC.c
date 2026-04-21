@@ -5,17 +5,19 @@
 
 extern SPI_HandleTypeDef hspi1;
 
+uint8_t WRITE_FAST_COMMAND = (ADC_DEVICE_ADRESS << 6) | (Fast_Command<< 2) | (Incremental_Write);
+// uint8_t WRITE_TO_REGISTER_0 = (ADC_DEVICE_ADRESS << 6) | (REG_CONFIG0 << 2) | Incremental_Write; // 
+// uint8_t WRITE_TO_REGISTER_1 = (ADC_DEVICE_ADRESS << 6) | (REG_CONFIG1 << 2) | Incremental_Write; // 
+// uint8_t WRITE_TO_REGISTER_2 = (ADC_DEVICE_ADRESS << 6) | (REG_CONFIG2 << 2) | Incremental_Write; // 
+uint8_t WRITE_TO_REGISTER_3 = (ADC_DEVICE_ADRESS << 6) | (REG_CONFIG3 << 2) | Incremental_Write; //     
+uint8_t WRITE_TO_REGISTER_IRQ = (ADC_DEVICE_ADRESS << 6) | (REG_IRQ << 2) | Incremental_Write; //
+
 /**
  * @brief Initialize SPI ADC
  * @returns void 
  */
 void SPI_ADC_INIT(void) {
 
-// uint8_t WRITE_TO_REGISTER_0 = (ADC_DEVICE_ADRESS << 6) | (REG_CONFIG0 << 2) | Incremental_Write; // 
-// uint8_t WRITE_TO_REGISTER_1 = (ADC_DEVICE_ADRESS << 6) | (REG_CONFIG1 << 2) | Incremental_Write; // 
-// uint8_t WRITE_TO_REGISTER_2 = (ADC_DEVICE_ADRESS << 6) | (REG_CONFIG2 << 2) | Incremental_Write; // 
-uint8_t WRITE_TO_REGISTER_3 = (ADC_DEVICE_ADRESS << 6) | (REG_CONFIG3 << 2) | Incremental_Write; //     
-uint8_t WRITE_TO_REGISTER_IRQ = (ADC_DEVICE_ADRESS << 6) | (REG_IRQ << 2) | Incremental_Write; //
 
 // CONFIG0-2 has not values changed, possible removable for optimization? (all 8 bits)
 // #define CONFIG0_VALUE = 0x0; 
@@ -40,6 +42,7 @@ PULL_ADC_CS_HIGH();
 }
 
 void START_SPI_Sample(void) {
-    uint8_t WRITE_FAST_COMMAND = (ADC_DEVICE_ADRESS << 6) | (ADC_CMD_CONVERSION_START);
-    SPI_SendCommand(ADC_CMD_CONVERSION_START);
+    SPI_SendCommand(WRITE_FAST_COMMAND);
+    
+
 }
