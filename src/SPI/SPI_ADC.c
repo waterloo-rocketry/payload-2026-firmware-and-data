@@ -5,25 +5,15 @@
 
 extern SPI_HandleTypeDef hspi1;
 
-
-
 /**
  * @brief Initialize SPI ADC
  * @returns void 
- * Sets External digital clock
- * No current source 
- * Shutdown mode 
- * 
- * 
  */
-
-
 void SPI_ADC_INIT(void) {
-HAL_StatusTypeDef status;
 
-uint8_t WRITE_TO_REGISTER_0 = (ADC_DEVICE_ADRESS << 6) | (REG_CONFIG0 << 2) | Incremental_Write; // 
-uint8_t WRITE_TO_REGISTER_1 = (ADC_DEVICE_ADRESS << 6) | (REG_CONFIG1 << 2) | Incremental_Write; // 
-uint8_t WRITE_TO_REGISTER_2 = (ADC_DEVICE_ADRESS << 6) | (REG_CONFIG2 << 2) | Incremental_Write; // 
+// uint8_t WRITE_TO_REGISTER_0 = (ADC_DEVICE_ADRESS << 6) | (REG_CONFIG0 << 2) | Incremental_Write; // 
+// uint8_t WRITE_TO_REGISTER_1 = (ADC_DEVICE_ADRESS << 6) | (REG_CONFIG1 << 2) | Incremental_Write; // 
+// uint8_t WRITE_TO_REGISTER_2 = (ADC_DEVICE_ADRESS << 6) | (REG_CONFIG2 << 2) | Incremental_Write; // 
 uint8_t WRITE_TO_REGISTER_3 = (ADC_DEVICE_ADRESS << 6) | (REG_CONFIG3 << 2) | Incremental_Write; //     
 uint8_t WRITE_TO_REGISTER_IRQ = (ADC_DEVICE_ADRESS << 6) | (REG_IRQ << 2) | Incremental_Write; //
 
@@ -32,11 +22,8 @@ uint8_t WRITE_TO_REGISTER_IRQ = (ADC_DEVICE_ADRESS << 6) | (REG_IRQ << 2) | Incr
 // #define CONFIG1_VALUE = 0xC; 
 // #define CONFIG2_VALUE = 0xB;
 
-
-// 8 Bits
 uint8_t CONFIG3_VALUE = 0x40;
 uint8_t IRQ = 0x77;
-
 
 // Start communcation with ADC
 
@@ -50,6 +37,9 @@ SPI_SendCommand(WRITE_TO_REGISTER_IRQ);
 SPI_SendCommand(IRQ);
 PULL_ADC_CS_HIGH();
 
-
 }
 
+void START_SPI_Sample(void) {
+    uint8_t WRITE_FAST_COMMAND = (ADC_DEVICE_ADRESS << 6) | (ADC_CMD_CONVERSION_START);
+    SPI_SendCommand(ADC_CMD_CONVERSION_START);
+}
