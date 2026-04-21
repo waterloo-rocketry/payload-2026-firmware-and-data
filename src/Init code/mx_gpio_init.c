@@ -13,7 +13,7 @@ void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(IRQ_MDAT_GPIO_Port, IRQ_MDAT_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(ADC_IRQ_GPIO_Port, ADC_IRQ_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, LED1_Pin|LED2_Pin|SD_CS_Pin, GPIO_PIN_SET);
@@ -25,7 +25,7 @@ void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOB, DAC_RESET_Pin|LAS_ENABLE_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : IRQ_MDAT_Pin SD_CS_Pin */
-  GPIO_InitStruct.Pin = IRQ_MDAT_Pin|SD_CS_Pin;
+  GPIO_InitStruct.Pin = ADC_IRQ_Pin|SD_CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
