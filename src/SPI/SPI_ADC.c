@@ -11,6 +11,7 @@ uint8_t WRITE_FAST_COMMAND = (ADC_DEVICE_ADRESS << 6) | (Fast_Command<< 2) | (In
 // uint8_t WRITE_TO_REGISTER_2 = (ADC_DEVICE_ADRESS << 6) | (REG_CONFIG2 << 2) | Incremental_Write; // 
 uint8_t WRITE_TO_REGISTER_3 = (ADC_DEVICE_ADRESS << 6) | (REG_CONFIG3 << 2) | Incremental_Write; //     
 uint8_t WRITE_TO_REGISTER_IRQ = (ADC_DEVICE_ADRESS << 6) | (REG_IRQ << 2) | Incremental_Write; //
+uint8_t SEND_DATA_COMMAND = (ADC_DEVICE_ADRESS << 6) | (ADC_DATA << 2) | Incremental_Read; // 
 
 /**
  * @brief Initialize SPI ADC
@@ -41,8 +42,16 @@ PULL_ADC_CS_HIGH();
 
 }
 
-void START_SPI_Sample(void) {
+void START_SPI_Sample_Short(void) {
+    PULL_ADC_CS_LOW();
     SPI_SendCommand(WRITE_FAST_COMMAND);
-    
+    SPI_SendCommand(ADC_CMD_CONVERSION_START);
+    PULL_ADC_CS_HIGH()  ;
+}
 
+
+void START_SPI_TRANSFER_MISO(void) {
+    PULL_ADC_CS_LOW();
+    SPI_SendCommand(SEND_DATA_COMMAND);
+    PULL_ADC_CS_HIGH();
 }

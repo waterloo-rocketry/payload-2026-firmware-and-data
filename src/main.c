@@ -16,6 +16,7 @@
 #include "can_storage.h"
 #include "CAN_shortcuts.h"
 #include "SPI.h"
+#include "SPI_ADC.h"
  
 
 int main(void) {
@@ -29,7 +30,7 @@ int main(void) {
     MX_FDCAN1_Init();
     MX_SPI1_Init();
 
-    // SPI_ADC_INIT(); // To test
+    SPI_ADC_INIT(); // To test
     
     // Initialize CAN with receive callback
     stm32g4_can_init(&hfdcan1, my_recive_callback); 
@@ -55,7 +56,7 @@ int main(void) {
         //     }
         // }
         
-        
+
     }
      
     

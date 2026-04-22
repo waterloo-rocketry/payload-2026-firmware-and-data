@@ -9,6 +9,7 @@
 extern SPI_HandleTypeDef hspi1;
 
 
+
 void SPI_SendCommand(uint8_t cmd) {
     HAL_StatusTypeDef status;
     uint8_t data = cmd;
@@ -33,7 +34,6 @@ void SPI_ReceiveData(uint8_t *buffer, uint16_t size) {
     
     // Turn LED on before reception
     HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_RESET);
-    HAL_Delay(10); 
     
     status = HAL_SPI_Receive(&hspi1, buffer, size, 1000);
 
@@ -46,28 +46,22 @@ void SPI_ReceiveData(uint8_t *buffer, uint16_t size) {
     } 
 }
 
-
-
-// Functions to control chip select lines for ADC,DAC and SD card 
-// High is no communcation, low is communcation, by default all CS lines are high 
-
-
-void Pull_ADC_CS_LOW(void) {
+void PULL_ADC_CS_LOW(void) {
     HAL_GPIO_WritePin(SPI_CS_ADC_GPIO_Port, SPI_CS_ADC_Pin, GPIO_PIN_RESET);
     blinky_flick_fast_L2();
 }
 
-void Pull_ADC_CS_HIGH(void) {
+void PULL_ADC_CS_HIGH(void) {
     HAL_GPIO_WritePin(SPI_CS_ADC_GPIO_Port, SPI_CS_ADC_Pin, GPIO_PIN_SET);
     blinky_flick_fast_L2();
 }
 
-void Pull_DAC_CS_LOW(void) {
+void PULL_DAC_CS_LOW(void) {
     HAL_GPIO_WritePin(CS_DAC_GPIO_Port, CS_DAC_Pin, GPIO_PIN_RESET);
     blinky_flick_fast_L2();
 }
 
-void Pull_DAC_CS_HIGH(void) {
+void PULL_DAC_CS_HIGH(void) {
     HAL_GPIO_WritePin(CS_DAC_GPIO_Port, CS_DAC_Pin, GPIO_PIN_SET);
     blinky_flick_fast_L2();
 }
@@ -81,3 +75,9 @@ void Pull_SD_CS_HIGH(void) {
     HAL_GPIO_WritePin(SD_CS_GPIO_Port, SD_CS_Pin, GPIO_PIN_SET);
     blinky_flick_fast_L2();
 }
+
+
+
+// Functions to control chip select lines for ADC,DAC and SD card 
+// High is no communcation, low is communcation, by default all CS lines are high 
+
