@@ -1,8 +1,11 @@
 
+
 #ifndef SPI_ADC_H
 #define SPI_ADC_H
 
+#include <string.h>
 #include <stdint.h>
+#include <stdbool.h>
 
 typedef enum {
     ADC_DATA    = 0x0,
@@ -35,6 +38,7 @@ typedef enum {
 
 
 void SPI_ADC_INIT(void);
+bool SPI_ADC_Check_Config(void);
 
 
 #endif 

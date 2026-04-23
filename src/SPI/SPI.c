@@ -29,7 +29,7 @@ void SPI_SendCommand(uint8_t cmd) {
     } 
 }
 
-void SPI_ReceiveData(uint8_t *buffer, uint16_t size) {
+void SPI_ReceiveData(uint8_t *buffer, uint8_t size) {
     HAL_StatusTypeDef status;
     
     // Turn LED on before reception

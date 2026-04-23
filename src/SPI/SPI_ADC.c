@@ -1,5 +1,5 @@
-#include "SPI_ADC.h"
 #include "SPI.h"
+#include "SPI_ADC.h"
 #include "stm32g4xx_hal.h"
 #include "stm32g4xx_hal_spi.h"
 
@@ -49,9 +49,17 @@ void START_SPI_Sample_Short(void) {
     PULL_ADC_CS_HIGH()  ;
 }
 
+void START_SPI_Sample_Countinous(void) {
+    PULL_ADC_CS_LOW();
+    SPI_SendCommand(WRITE_FAST_COMMAND);
+    SPI_SendCommand(ADC_CMD_CONVERSION_RESTART);
+    PULL_ADC_CS_HIGH()  ;
+}
+
 
 void START_SPI_TRANSFER_MISO(void) {
     PULL_ADC_CS_LOW();
     SPI_SendCommand(SEND_DATA_COMMAND);
+    // SPI_ReceiveData(buffer, size); // TODO: define buffer and size
     PULL_ADC_CS_HIGH();
 }
