@@ -1,9 +1,8 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file           : main.h
-  * @brief          : Header for main.c file.
-  *                   This file contains the common defines of the application.
+  * @file   app_fatfs.h
+  * @brief  Header for fatfs applications
   ******************************************************************************
   * @attention
   *
@@ -19,28 +18,16 @@
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __MAIN_H
-#define __MAIN_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
+#ifndef __APP_FATFS_H
+#define __APP_FATFS_H
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32g4xx_hal.h"
-#include "system_clock_config.h"
-#include "mx_adc_init.h"
-#include "mx_spi_init.h"
-#include "mx_tim1_init.h"
-#include "mx_fdcan1_init.h"
-#include "GPIO_init.h"
-
+#include "ff.h"
+#include "ff_gen_drv.h"
+#include "user_diskio.h" /* defines USER_Driver as external */
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
-SPI_HandleTypeDef hspi1;
-#define SD_SPI_HANDLE hspi1
 
 /* USER CODE END Includes */
 
@@ -59,44 +46,22 @@ SPI_HandleTypeDef hspi1;
 
 /* USER CODE END EM */
 
-void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
-
 /* Exported functions prototypes ---------------------------------------------*/
-void Error_Handler(void);
-
+int32_t MX_FATFS_Init(void);
+int32_t MX_FATFS_Process(void);
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define CUR_SEN_Pin GPIO_PIN_0
-#define CUR_SEN_GPIO_Port GPIOA
-#define ADC_IRQ_Pin GPIO_PIN_1
-#define ADC_IRQ_GPIO_Port GPIOA
-#define ADC_IRQ_EXTI_IRQn EXTI1_IRQn
-#define LED1_Pin GPIO_PIN_2
-#define LED1_GPIO_Port GPIOA
-#define LED2_Pin GPIO_PIN_3
-#define LED2_GPIO_Port GPIOA
-#define SPI_CS_ADC_Pin GPIO_PIN_4
-#define SPI_CS_ADC_GPIO_Port GPIOA
-#define CS_DAC_Pin GPIO_PIN_0
-#define CS_DAC_GPIO_Port GPIOB
-#define SD_CS_Pin GPIO_PIN_15
-#define SD_CS_GPIO_Port GPIOA
-#define DAC_RESET_Pin GPIO_PIN_4
-#define DAC_RESET_GPIO_Port GPIOB
-#define LAS_ENABLE_Pin GPIO_PIN_7
-#define LAS_ENABLE_GPIO_Port GPIOB
-
 /* USER CODE BEGIN Private defines */
-
+#define APP_OK                      0
+#define APP_ERROR                  -1
+#define APP_SD_UNPLUGGED           -2
 /* USER CODE END Private defines */
 
-#ifdef __cplusplus
-}
-#endif
+extern FATFS USERFatFs;    /* File system object for USER logical drive */
+extern FIL USERFile;       /* File  object for USER */
+extern char USERPath[4];   /* USER logical drive path */
 
-#endif /* __MAIN_H */
-
-// Status changes????
+#endif /*__APP_FATFS_H */

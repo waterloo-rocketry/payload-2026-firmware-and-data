@@ -151,6 +151,17 @@ void SVC_Handler(void)
   /* USER CODE END SVCall_IRQn 1 */
 }
 
+void EXTI1_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI1_IRQn 0 */
+
+  /* USER CODE END EXTI1_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(ADC_IRQ_Pin);
+  /* USER CODE BEGIN EXTI1_IRQn 1 */
+
+  /* USER CODE END EXTI1_IRQn 1 */
+}
+
 /**
   * @brief This function handles Debug monitor.
   */
