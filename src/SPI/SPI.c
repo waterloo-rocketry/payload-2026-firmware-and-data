@@ -1,14 +1,8 @@
 #include "stdint.h"
-#include "stm32g4xx_hal.h"
-#include "stm32g4xx_hal_spi.h"
 #include "stdint.h"
 #include "main.h"
 #include "SPI.h"
 #include "blinky_flick.h"
-
-extern SPI_HandleTypeDef hspi1;
-
-
 
 void SPI_SendCommand(uint8_t cmd) {
     HAL_StatusTypeDef status;
@@ -66,12 +60,12 @@ void PULL_DAC_CS_HIGH(void) {
     blinky_flick_fast_L2();
 }
 
-void Pull_SD_CS_LOW(void) {
+void PULL_SD_CS_LOW(void) {
     HAL_GPIO_WritePin(SD_CS_GPIO_Port, SD_CS_Pin, GPIO_PIN_RESET);
     blinky_flick_fast_L2();
 }
 
-void Pull_SD_CS_HIGH(void) {
+void PULL_SD_CS_HIGH(void) {
     HAL_GPIO_WritePin(SD_CS_GPIO_Port, SD_CS_Pin, GPIO_PIN_SET);
     blinky_flick_fast_L2();
 }

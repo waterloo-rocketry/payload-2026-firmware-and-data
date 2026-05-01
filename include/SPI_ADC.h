@@ -7,6 +7,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#define ADC_DEVICE_ADRESS 0x1
+
 typedef enum {
     ADC_DATA    = 0x0,
     REG_CONFIG0 = 0x1,
@@ -23,7 +25,6 @@ Incremental_Write = 0x2,
 Incremental_Read = 0x3
 } ADC_COMMAND_TYPE;
 
-#define ADC_DEVICE_ADRESS 0x1
 
 typedef enum { 
     DEBUG_SPI_ADC = 0x15, // 10101
@@ -40,5 +41,13 @@ typedef enum {
 void SPI_ADC_INIT(void);
 bool SPI_ADC_Check_Config(void);
 
+
+extern uint8_t WRITE_FAST_COMMAND;
+extern uint8_t WRITE_TO_REGISTER_0;
+extern uint8_t WRITE_TO_REGISTER_1;
+extern uint8_t WRITE_TO_REGISTER_2;
+extern uint8_t WRITE_TO_REGISTER_3;
+extern uint8_t WRITE_TO_REGISTER_IRQ;
+extern uint8_t SEND_DATA_COMMAND;
 
 #endif 

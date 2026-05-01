@@ -1,11 +1,5 @@
 
 #include "main.h"
-#include "system_clock_config.h"
-#include "mx_adc_init.h"
-#include "mx_spi_init.h"
-#include "mx_tim1_init.h"
-#include "mx_fdcan1_init.h"
-#include "GPIO_init.h"
 #include "blinky_flick.h"
 #include "SPI_ADC.h"
 #include "stm32g4xx_hal_fdcan.h"
@@ -17,7 +11,11 @@
 #include "CAN_shortcuts.h"
 #include "SPI.h"
 #include "SPI_ADC.h"
- 
+#include "app_fatfs.h"
+#include "user_diskio_spi.h"
+#include "SPI_SD.h"
+#include "ff_gen_drv.h"
+
 
 int main(void) {
 
@@ -31,6 +29,7 @@ int main(void) {
     MX_SPI1_Init();
 
     SPI_ADC_INIT(); // To test
+    SD_initialize();
     
     // Initialize CAN with receive callback
     stm32g4_can_init(&hfdcan1, my_recive_callback); 
@@ -77,6 +76,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
            the HAL_GPIO_EXTI_Callback could be implemented in the user file
    */
 }
+
+
 
 void Error_Handler(void) {
     // Signal error by toggling LED rapidly

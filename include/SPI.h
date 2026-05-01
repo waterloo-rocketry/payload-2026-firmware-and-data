@@ -1,4 +1,9 @@
 #include <stdint.h>
+#include "stm32g4xx_hal.h"
+#include "stm32g4xx_hal_spi.h"
+
+uint8_t buffer[4];
+extern SPI_HandleTypeDef hspi1;
 
 void SPI_SendCommand(uint8_t cmd);
 void SPI_ReceiveData(uint8_t *buffer, uint8_t size);

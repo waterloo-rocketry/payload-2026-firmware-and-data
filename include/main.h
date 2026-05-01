@@ -28,10 +28,18 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32g4xx_hal.h"
+#include "system_clock_config.h"
+#include "mx_adc_init.h"
+#include "mx_spi_init.h"
+#include "mx_tim1_init.h"
+#include "mx_fdcan1_init.h"
+#include "GPIO_init.h"
+
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+SPI_HandleTypeDef hspi1;
 #define SD_SPI_HANDLE hspi1
 
 /* USER CODE END Includes */
